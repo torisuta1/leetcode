@@ -7,24 +7,18 @@
 # @lc code=start
 class Solution:
     def romanToInt(self, s: str) -> int:
-        char_list = [0]
-        comparison_list = [0]
-        for i, char in enumerate(s):
-            if char == "I" : tmp = 1 
-            if char == "V" : tmp = 5 
-            if char == "X" : tmp = 10 
-            if char == "L" : tmp = 50 
-            if char == "C" : tmp = 100 
-            if char == "D" : tmp = 500 
-            if char == "M" : tmp = 1000 
-            if comparison_list[i] >= tmp:
-                char_list.append(tmp)
-                comparison_list.append(tmp)
-            if comparison_list[i] < tmp:
-                char_list.append(tmp - char_list[i] * 2)
-                comparison_list.append(tmp)
-        return sum(char_list)
+        sum = 0
+        tmp = 0
+        roman_to_int_dict = {"I":1,"V":5,"X":10,"L":50,"C":100,"D":500,"M":1000}
 
+        for i in s[::-1]:
+            i = roman_to_int_dict[i]
+            if tmp > i:
+                sum -= i
+            else:
+                sum += i
+            tmp = i
+        return sum
         
 
 # @lc code=end
