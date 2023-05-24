@@ -8,5 +8,6 @@
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
         
+        
 # @lc code=end
 
