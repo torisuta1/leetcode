@@ -7,12 +7,18 @@
 # @lc code=start
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        nums_dict = {}
-        for i, num in enumerate(nums):
-            diff = target - num
-            if diff in nums_dict:
-                return [nums_dict[diff], i]
-            nums_dict[num] = i
+        numMap = {}
+        n = len(nums)
+
+        for i in range(n):
+            numMap[nums[i]] = i
+        for i in range(n):
+            complement = target - nums[i]
+            if complement in numMap and numMap[complement] != i:
+                return [i, numMap[complement]]
+
+        return []
+            
         
 # @lc code=end
 
